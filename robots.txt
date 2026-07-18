@@ -1,0 +1,5 @@
+# Robots.txt for Hancock Software Services (hancockssoftware.com)
+User-agent: *
+Allow: /
+
+Sitemap: https://hancockssoftware.com/sitemap.xml
