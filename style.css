@@ -827,6 +827,7 @@ footer {
 
 /* VISUAL CUSTOMIZER (CMS PANEL) */
 .customizer-toggle {
+  display: none;
   position: fixed;
   bottom: 25px;
   right: 25px;

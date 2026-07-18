@@ -11,10 +11,10 @@ window.HancockConfig = {
     name: 'Hancock Software Services',
     logoText: 'Hancock',
     domain: 'hancockssoftware.com',
-    tagline: 'Custom Software Systems & High-End Cloud Architecture',
-    contactEmail: 'contact@hancockssoftware.com',
-    contactPhone: '+1 (555) 019-2834',
-    address: '100 Innovation Way, Suite 400, Boston, MA 02110',
+    tagline: 'Enterprise Software QA Consultancy & Performance Digital Marketing',
+    contactEmail: '',
+    contactPhone: '',
+    address: '',
     socials: {
       github: 'https://github.com',
       linkedin: 'https://linkedin.com',
@@ -22,106 +22,74 @@ window.HancockConfig = {
     }
   },
   hero: {
-    badge: 'Enterprise Engineering',
-    title: 'Transforming Vision Into High-Performance Software',
-    subtitle: 'We design, build, and scale bespoke software solutions that enable industry leaders to outpace the competition. From legacy refactoring to cloud-native deployments.',
+    badge: 'QA & Digital Marketing Excellence',
+    title: 'Ensuring Software Flawlessness & Driving Market Growth',
+    subtitle: 'We specialize in elite Software Quality Assurance consultancy to ensure bulletproof systems, combined with data-driven Digital Marketing engines to scale your user acquisition.',
     primaryCTA: 'Get Started',
     primaryCTALink: '#contact',
-    secondaryCTA: 'View Portfolio',
+    secondaryCTA: 'View Case Studies',
     secondaryCTALink: '#portfolio',
-    codeSnippet: `const hancock = {\n  services: ["Cloud-Native", "AI Integrations", "Custom APIs"],\n  delivery: "Agile & Secure",\n  excellence: true\n};\n\nawait hancock.deploy("hancockssoftware.com");`
+    codeSnippet: `const hancock = {\n  expertise: ["Software QA", "Automation Frameworks", "Digital Marketing"],\n  value: "Flawless Delivery & Bulletproof Growth",\n  contact: "contact@hancockssoftware.com"\n};\n\nawait hancock.maximizeROI("hancockssoftware.com");`
   },
   about: {
-    badge: 'Our Identity',
+    badge: 'Core Strategy',
     title: 'Who We Are',
-    p1: 'At Hancock Software Services, we bridge the gap between complex technological challenges and robust business objectives. We specialize in software architecture that scales seamlessly with your enterprise.',
-    p2: 'Our team comprises elite developers, cloud architects, and product designers dedicated to executing with precision. We don\'t just write code; we architect systems that secure future growth.',
+    p1: 'Hancock Software Services is a dual-focus agency. We recognize that top-tier companies need two things to dominate: software that works perfectly every single time, and a marketing engine that keeps high-intent leads flowing.',
+    p2: 'We combine world-class Software QA consultancy (manual exploratory testing, full-suite automated regression, load testing) with performance Digital Marketing (technical SEO, PPC search campaigns, funnel design, and analytics) to offer comprehensive risk mitigation and growth engineering.',
     stats: [
-      { number: '99%', label: 'Project Success Rate' },
-      { number: '150+', label: 'Deployments' },
-      { number: '12+', label: 'Industry Awards' },
-      { number: '24/7', label: 'Support & Ops' }
+      { number: '0', label: 'Critical Bugs in Prod' },
+      { number: '3.4x', label: 'Average Client ROI Boost' },
+      { number: '200+', label: 'Automation Test Suites Built' },
+      { number: '24/7', label: 'Continuous Delivery Gating' }
     ]
   },
   services: [
     {
       id: 1,
-      icon: 'Cpu',
-      title: 'Custom Software Architecture',
-      description: 'End-to-end design and construction of custom systems tailored to your unique operations, focusing on reliability, throughput, and modular maintenance.'
+      icon: 'ShieldCheck',
+      title: 'Next-Gen AI-Driven QA & Test Automation',
+      description: 'Establish absolute software reliability using AI-augmented Quality Assurance. We design self-healing Test Automation Frameworks using Playwright, Cypress, and Selenium, integrating LLM-based autonomous test generation that adapts scripts to UI changes in real-time. Our QA pipelines implement computer vision for automated visual regression, predictive ML models to map test coverage to high-risk code commits, API security fuzzing, and extreme load/soak testing using K6 and JMeter, guaranteeing zero-regression software delivery.'
     },
     {
       id: 2,
-      icon: 'CloudLightning',
-      title: 'Cloud-Native Migrations',
-      description: 'Architecting secure AWS, Azure, and Google Cloud environments. Containerization via Docker & Kubernetes with streamlined, auto-scaling CI/CD pipelines.'
-    },
-    {
-      id: 3,
-      icon: 'ShieldCheck',
-      title: 'AI & Data Integration',
-      description: 'Embedding large language models, predictive analysis tools, and machine learning pipelines into business operations to extract immediate ROI.'
-    },
-    {
-      id: 4,
-      icon: 'Zap',
-      title: 'Dedicated Engineering Teams',
-      description: 'Augment your development capabilities with our elite engineers who embed directly into your workflows, adhering to high-velocity delivery standards.'
+      icon: 'TrendingUp',
+      title: 'AI-Powered Digital Marketing & Growth Engines',
+      description: 'Scale your user acquisition funnel using predictive analytics and machine learning. We engineer data-driven growth machines integrating technical SEO driven by semantic NLP algorithms to dominate search landscapes, deploy AI-copilot PPC ad optimization models across Google and LinkedIn Ads, and design programmatic A/B testing frameworks using multi-armed bandit traffic allocation. Backed by GA4, Mixpanel, and machine-learning attribution models, we map the entire user journey to deliver maximum pipeline ROI.'
     }
   ],
   portfolio: [
     {
       id: 1,
-      title: 'Aegis Security Gateway',
-      category: 'Cloud',
-      description: 'Refactoring a high-load financial transaction parser to run in microservices, achieving an 80% reduction in processing overhead.',
-      tags: ['Kubernetes', 'Go', 'gRPC', 'AWS']
+      title: 'Fintech Core Automated QA Gating',
+      category: 'Enterprise',
+      description: 'Built a headless automation suite testing 800+ user flows on every merge, reducing staging-to-prod release cycle from 3 days to 15 minutes.',
+      tags: ['Playwright', 'CI/CD Gating', 'API Regression', 'K6 Load Testing']
     },
     {
       id: 2,
-      title: 'NextGen Inventory Engine',
-      category: 'Enterprise',
-      description: 'Real-time retail inventory synchronization with AI demand forecasting for an international supply chain network.',
-      tags: ['TypeScript', 'Python', 'PostgreSQL', 'FastAPI']
-    },
-    {
-      id: 3,
-      title: 'OmniChannel Portal',
+      title: 'SaaS Acquisition Marketing Engine',
       category: 'Web',
-      description: 'A client-centric billing portal featuring interactive dashboards, customizable billing reports, and Stripe payment gateway.',
-      tags: ['React', 'CSS Variables', 'Node.js', 'Stripe']
+      description: 'Overhauled a B2B SaaS platform SEO keyword strategy and conversion funnel, resulting in a 180% increase in demo signups in 90 days.',
+      tags: ['Technical SEO', 'CRO', 'Google Ads', 'GA4 Analytics']
     }
   ],
   blogs: [
     {
       id: 1,
-      date: 'July 15, 2026',
-      readTime: '6 min read',
-      title: 'Transitioning to Serverless: The Real Costs & Benefits',
-      summary: 'Before migrating your entire database cluster to serverless functions, read our architecture review detailing hidden execution costs and cold start mitigation.',
-      content: 'Serverless architectures promise infinite scale and cost-efficiency by charging only for exact compute time. However, many enterprise teams experience sticker shock after transitioning high-throughput APIs to serverless. In this post, we break down cold start optimization strategies, VPC database connection pooling limits, and cost-benefit criteria that will guide your architecture team to make the right cloud design decisions.'
+      date: 'July 18, 2026',
+      readTime: '8 min read',
+      title: 'Building Bulletproof CI/CD Gating: A Blueprint for QA Teams',
+      summary: 'How to set up automated verification tests that run on pull requests without blocking developer workflows or creating flaky failures.',
+      content: 'Continuous Integration is only as strong as your gating mechanism. Running a heavy automation suite on every single commit can lead to slow build pipelines and developer frustration due to flaky tests. In this architectural guide, we discuss splitting test suites into smoke, regression, and end-to-end integration tiers. We explain setup strategies in GitHub Actions, handling database state resets, and setting failure threshold controls to achieve high-confidence releases.'
     },
     {
       id: 2,
-      date: 'June 28, 2026',
-      readTime: '4 min read',
-      title: 'Leveraging AI APIs for Domain-Specific Data Cleansing',
-      summary: 'How Hancock integrated an LLM processing layer to standardize unstructured client telemetry logs with 99.8% precision.',
-      content: 'Cleaning legacy data is notoriously labor-intensive. By combining traditional regex sanitizers with a semantic evaluation agent powered by modern LLMs, we built a pipeline that parses messy logs, identifies edge cases, and transforms unstructured text into valid JSON. This post details our security-first prompting technique and latency-reduction strategies for bulk API processing.'
+      date: 'June 30, 2026',
+      readTime: '6 min read',
+      title: 'Cracking B2B Acquisition: The SEO Topic Cluster Strategy',
+      summary: 'Why traditional keyword stuffing is obsolete, and how grouping structured pages around core expertise topics drives high-intent leads.',
+      content: 'Modern search algorithms prioritize semantic authority over simple keyword density. To rank for high-value transactional search queries, businesses must construct topical hubs. In this digital marketing deep dive, we detail the step-by-step process of auditing your core offerings, identifying pillar topics, writing detailed cluster articles, and establishing a robust internal linking structure that signals domain expertise to Google.'
     }
   ],
-  testimonials: [
-    {
-      id: 1,
-      quote: 'Hancock Software Services revolutionized our cloud posture. Their team redesigned our distributed messaging layer, resolving bottlenecks that had plagued our production servers for six months.',
-      author: 'Marcus Vance',
-      title: 'VP of Engineering, PayCor Ltd'
-    },
-    {
-      id: 2,
-      quote: 'The caliber of engineering Hancock brought to the table is unmatched. They worked alongside our core dev team, instilling best practices and executing our AWS migration on schedule.',
-      author: 'Elena Rostova',
-      title: 'Chief Technology Officer, LogiSync'
-    }
-  ]
+  testimonials: []
 };

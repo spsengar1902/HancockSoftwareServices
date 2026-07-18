@@ -71,7 +71,15 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('footer-branding-name').textContent = config.branding.name;
     document.getElementById('footer-tagline').textContent = config.branding.tagline;
     document.getElementById('footer-domain-display').textContent = `Domain: ${config.branding.domain}`;
-    document.getElementById('footer-email-display').textContent = config.branding.contactEmail;
+    const footerEmail = document.getElementById('footer-email-display');
+    if (footerEmail) {
+      if (config.branding.contactEmail) {
+        footerEmail.textContent = config.branding.contactEmail;
+        footerEmail.style.display = '';
+      } else {
+        footerEmail.style.display = 'none';
+      }
+    }
     document.getElementById('footer-copyright').innerHTML = `&copy; ${new Date().getFullYear()} ${config.branding.name}. All rights reserved.`;
 
     // Footer Social links
@@ -269,13 +277,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const renderTestimonials = () => {
     const container = document.getElementById('testimonials-container');
+    const section = document.getElementById('testimonials');
     container.innerHTML = '';
     
     const items = config.testimonials || [];
     
     if (items.length === 0) {
-      container.innerHTML = `<div class="testimonial-slide"><p class="testimonial-quote">No testimonials available. Add some in the customizer!</p></div>`;
+      if (section) section.style.display = 'none';
       return;
+    } else {
+      if (section) section.style.display = '';
     }
 
     items.forEach(testi => {
@@ -413,37 +424,73 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const renderContactInfo = () => {
     const container = document.getElementById('contact-info-container');
-    container.innerHTML = `
-      <div class="contact-item">
-        <div class="contact-icon">
-          <i data-lucide="mail"></i>
+    const contactGrid = document.querySelector('.contact-grid');
+    
+    const email = config.branding.contactEmail ? config.branding.contactEmail.trim() : '';
+    const phone = config.branding.contactPhone ? config.branding.contactPhone.trim() : '';
+    const address = config.branding.address ? config.branding.address.trim() : '';
+    
+    let html = '';
+    
+    if (email) {
+      html += `
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i data-lucide="mail"></i>
+          </div>
+          <div class="contact-details">
+            <h3>Direct Communications</h3>
+            <p>${email}</p>
+          </div>
         </div>
-        <div class="contact-details">
-          <h3>Direct Communications</h3>
-          <p>${config.branding.contactEmail}</p>
+      `;
+    }
+    
+    if (phone) {
+      html += `
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i data-lucide="phone"></i>
+          </div>
+          <div class="contact-details">
+            <h3>Corporate Office Phone</h3>
+            <p>${phone}</p>
+          </div>
         </div>
-      </div>
-      
-      <div class="contact-item">
-        <div class="contact-icon">
-          <i data-lucide="phone"></i>
+      `;
+    }
+    
+    if (address) {
+      html += `
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i data-lucide="map-pin"></i>
+          </div>
+          <div class="contact-details">
+            <h3>Engineering Headquarters</h3>
+            <p>${address}</p>
+          </div>
         </div>
-        <div class="contact-details">
-          <h3>Corporate Office Phone</h3>
-          <p>${config.branding.contactPhone}</p>
-        </div>
-      </div>
-      
-      <div class="contact-item">
-        <div class="contact-icon">
-          <i data-lucide="map-pin"></i>
-        </div>
-        <div class="contact-details">
-          <h3>Engineering Headquarters</h3>
-          <p>${config.branding.address}</p>
-        </div>
-      </div>
-    `;
+      `;
+    }
+    
+    container.innerHTML = html;
+    
+    if (!email && !phone && !address) {
+      container.style.display = 'none';
+      if (contactGrid) {
+        contactGrid.style.gridTemplateColumns = '1fr';
+        contactGrid.style.maxWidth = '600px';
+        contactGrid.style.margin = '0 auto';
+      }
+    } else {
+      container.style.display = 'flex';
+      if (contactGrid) {
+        contactGrid.style.gridTemplateColumns = '';
+        contactGrid.style.maxWidth = '';
+        contactGrid.style.margin = '';
+      }
+    }
   };
 
   // Helper to escape HTML tags
@@ -556,11 +603,37 @@ document.addEventListener('DOMContentLoaded', () => {
   const customizerPanel = document.getElementById('customizer-panel');
   const customizerOpenBtn = document.getElementById('customizer-open-btn');
   const customizerCloseBtn = document.getElementById('customizer-close-btn');
+  let customizerUnlocked = false;
 
-  // Toggle drawer open
-  customizerOpenBtn.addEventListener('click', () => {
+  const tryUnlockCustomizer = () => {
+    if (!customizerUnlocked) {
+      const pin = prompt('Enter Developer Passcode to unlock the Site Configurator:');
+      if (pin === 'HancockDev2026') {
+        customizerUnlocked = true;
+        // Make the floating button visible for easy subsequent access in this session
+        customizerOpenBtn.style.display = 'flex';
+        alert('Access granted. Site Configurator unlocked.');
+      } else {
+        alert('Access denied. Incorrect passcode.');
+        return false;
+      }
+    }
     customizerPanel.classList.add('open');
     populateCustomizerInputs();
+    return true;
+  };
+
+  // Keyboard shortcut (Ctrl + Shift + E) to unlock and open editor
+  document.addEventListener('keydown', (e) => {
+    if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'e') {
+      e.preventDefault();
+      tryUnlockCustomizer();
+    }
+  });
+
+  // Toggle drawer open (from floating button after unlocked)
+  customizerOpenBtn.addEventListener('click', () => {
+    tryUnlockCustomizer();
   });
 
   // Toggle drawer close
