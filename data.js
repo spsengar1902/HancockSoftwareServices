@@ -10,7 +10,7 @@ window.HancockConfig = {
   branding: {
     name: 'Hancock Software Services',
     logoText: 'Hancock',
-    domain: 'YOUR_USERNAME.github.io/YOUR_REPO_NAME',
+    domain: 'hancockssoftware.com',
     tagline: 'Enterprise Software QA Consultancy & Performance Digital Marketing',
     contactEmail: '',
     contactPhone: '',
