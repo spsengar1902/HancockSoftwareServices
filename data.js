@@ -10,7 +10,7 @@ window.HancockConfig = {
   branding: {
     name: 'Hancock Software Services',
     logoText: 'Hancock',
-    domain: 'hancockssoftware.com',
+    domain: 'YOUR_USERNAME.github.io/YOUR_REPO_NAME',
     tagline: 'Enterprise Software QA Consultancy & Performance Digital Marketing',
     contactEmail: '',
     contactPhone: '',
@@ -29,7 +29,7 @@ window.HancockConfig = {
     primaryCTALink: '#contact',
     secondaryCTA: 'View Case Studies',
     secondaryCTALink: '#portfolio',
-    codeSnippet: `const hancock = {\n  expertise: ["Software QA", "Automation Frameworks", "Digital Marketing"],\n  value: "Flawless Delivery & Bulletproof Growth",\n  contact: "contact@hancockssoftware.com"\n};\n\nawait hancock.maximizeROI("hancockssoftware.com");`
+    codeSnippet: `const hancock = {\n  expertise: ["Software QA", "Automation Frameworks", "Digital Marketing"],\n  value: "Flawless Delivery & Bulletproof Growth",\n  contact: "contact@hancockssoftware.com"\n};\n\nawait hancock.maximizeROI("github.io");`
   },
   about: {
     badge: 'Core Strategy',

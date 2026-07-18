@@ -1,5 +1,5 @@
-# Robots.txt for Hancock Software Services (hancockssoftware.com)
+# Robots.txt for Hancock Software Services on GitHub Pages
 User-agent: *
 Allow: /
 
-Sitemap: https://hancockssoftware.com/sitemap.xml
+Sitemap: https://YOUR_USERNAME.github.io/YOUR_REPO_NAME/sitemap.xml
