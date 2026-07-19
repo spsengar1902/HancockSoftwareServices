@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://YOUR_USERNAME.github.io/YOUR_REPO_NAME/sitemap.xml
+Sitemap: https://hancockssoftware.com/sitemap.xml
