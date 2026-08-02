@@ -3,16 +3,16 @@
 
 window.HancockConfig = {
   theme: {
-    primaryColor: '#00f2fe',
-    secondaryColor: '#4facfe',
+    primaryColor: '#3cb371',
+    secondaryColor: '#8fbc8f',
     darkMode: true
   },
   branding: {
     name: 'Hancock Software Services',
-    logoText: 'Hancock',
+    logoText: 'HSS',
     domain: 'hancockssoftware.com',
-    tagline: 'Enterprise Software QA Consultancy & Performance Digital Marketing',
-    contactEmail: '',
+    tagline: 'Growth Marketing Campaigns & Advanced Quality Engineering Assurance',
+    contactEmail: 'marketing@hancockssoftware.com',
     contactPhone: '',
     address: '',
     socials: {
@@ -22,74 +22,238 @@ window.HancockConfig = {
     }
   },
   hero: {
-    badge: 'QA & Digital Marketing Excellence',
-    title: 'Ensuring Software Flawlessness & Driving Market Growth',
-    subtitle: 'We specialize in elite Software Quality Assurance consultancy to ensure bulletproof systems, combined with data-driven Digital Marketing engines to scale your user acquisition.',
-    primaryCTA: 'Get Started',
-    primaryCTALink: '#contact',
-    secondaryCTA: 'View Case Studies',
-    secondaryCTALink: '#portfolio',
-    codeSnippet: `const hancock = {\n  expertise: ["Software QA", "Automation Frameworks", "Digital Marketing"],\n  value: "Flawless Delivery & Bulletproof Growth",\n  contact: "contact@hancockssoftware.com"\n};\n\nawait hancock.maximizeROI("github.io");`
+    badge: 'Digital Performance & Quality Assurance Partner',
+    title: 'Scale Traffic. <span>Secure Code.</span>',
+    subtitle: 'Hancock Software Services delivers high-impact digital promotions, targeted mobile user acquisition, and advanced quality engineering solutions — combining growth marketing and shift-left automation to ensure absolute digital success.',
+    primaryCTA: 'Explore Our Services',
+    primaryCTALink: '#services',
+    secondaryCTA: 'Get in Touch',
+    secondaryCTALink: '#contact',
+    codeSnippet: `const hancock = {\n  marketing: ["Performance Campaigns", "App Installs", "Brand Promotions"],\n  quality: ["Intelligent Automation", "Digital Assurance", "CI/CD Gating"],\n  guarantee: "Zero-defect releases and maximum growth ROI"\n};\n\nawait Promise.all([\n  hancock.launchCampaigns(),\n  hancock.runAutomation()\n]);`
   },
   about: {
-    badge: 'Core Strategy',
-    title: 'Who We Are',
-    p1: 'Hancock Software Services is a dual-focus agency. We recognize that top-tier companies need two things to dominate: software that works perfectly every single time, and a marketing engine that keeps high-intent leads flowing.',
-    p2: 'We combine world-class Software QA consultancy (manual exploratory testing, full-suite automated regression, load testing) with performance Digital Marketing (technical SEO, PPC search campaigns, funnel design, and analytics) to offer comprehensive risk mitigation and growth engineering.',
+    badge: 'Who We Are',
+    title: 'Accelerating Growth and Guaranteeing Quality',
+    p1: 'Hancock Software Services is an elite consulting partner driving business outcomes across two critical frontiers: high-performance growth marketing and zero-defect software engineering. We help brands acquire users at scale and release secure, stable software that never fails under load.',
+    p2: 'We deploy targeted performance acquisition campaigns, mobile app installs, and multi-channel social media activations. In parallel, we build advanced, shift-left test automation pipelines and execute multi-platform digital assurance audits. Our dual-engine approach ensures your business grows rapidly and your software functions flawlessly.',
     stats: [
-      { number: '0', label: 'Critical Bugs in Prod' },
-      { number: '3.4x', label: 'Average Client ROI Boost' },
-      { number: '200+', label: 'Automation Test Suites Built' },
-      { number: '24/7', label: 'Continuous Delivery Gating' }
+      { number: '10M+', label: 'Acquired Users & App Installs' },
+      { number: '95%', label: 'Reduction in Staging Gating Latency' },
+      { number: '100%', label: 'Test Coverage for Critical API Tiers' },
+      { number: '3.8x', label: 'Average Marketing ROI Acceleration' }
     ]
   },
-  services: [
-    {
-      id: 1,
-      icon: 'ShieldCheck',
-      title: 'Next-Gen AI-Driven QA & Test Automation',
-      description: 'Establish absolute software reliability using AI-augmented Quality Assurance. We design self-healing Test Automation Frameworks using Playwright, Cypress, and Selenium, integrating LLM-based autonomous test generation that adapts scripts to UI changes in real-time. Our QA pipelines implement computer vision for automated visual regression, predictive ML models to map test coverage to high-risk code commits, API security fuzzing, and extreme load/soak testing using K6 and JMeter, guaranteeing zero-regression software delivery.'
+  services: {
+    marketing: {
+      title: 'Digital & Growth Services',
+      subtitle: 'High-performing, data-driven promotion and user acquisition campaigns designed to maximize digital ROI.',
+      items: [
+        {
+          id: 1,
+          icon: 'Users',
+          title: 'Affiliate Marketing',
+          description: 'Performance-based campaigns focused on quality leads, sales, and measurable actions through affiliate networks.',
+          features: ['Quality Lead Acquisition', 'Sales & Conversion Tracking', 'Measurable Action Focus']
+        },
+        {
+          id: 2,
+          icon: 'Smartphone',
+          title: 'App Install Campaigns',
+          description: 'Mobile user acquisition campaigns designed to drive genuine installs, active engagement, and long-term conversions.',
+          features: ['Genuine Mobile Installs', 'User Lifecycle Engagement', 'App Store Conversion Tuning']
+        },
+        {
+          id: 3,
+          icon: 'TrendingUp',
+          title: 'Brand Promotions',
+          description: 'Strategic digital promotions across online platforms designed to help brands increase visibility, trust, and market awareness.',
+          features: ['Cross-Platform Campaigns', 'Visibility & Reach Expansion', 'Brand Placement Strategy']
+        },
+        {
+          id: 4,
+          icon: 'Tv',
+          title: 'YouTube Promotions',
+          description: 'Targeted campaigns on YouTube to improve reach, views, engagement, and audience awareness for brands and creators.',
+          features: ['Video Reach & Views', 'Audience Engagement', 'Viewer Awareness Growth']
+        },
+        {
+          id: 5,
+          icon: 'Facebook',
+          title: 'Facebook Promotions',
+          description: 'Structured Facebook campaigns tailored for brand awareness, page growth, lead generation, traffic, and audience engagement.',
+          features: ['Brand Awareness Ads', 'Lead Generation Ads', 'Traffic & Page Growth']
+        },
+        {
+          id: 6,
+          icon: 'Instagram',
+          title: 'Instagram Promotions',
+          description: 'Visual campaigns to boost brand presence, followers, views, and active engagement among relevant targeted audiences.',
+          features: ['Audience Growth & Engagement', 'Brand Presence Enhancement', 'Visual Conversion Ads']
+        },
+        {
+          id: 7,
+          icon: 'MousePointer',
+          title: 'CPC Campaigns',
+          description: 'Cost-per-click traffic generation focused on getting targeted traffic and quality visitors to your website or landing pages.',
+          features: ['Cost-Per-Click Optimization', 'High-Intent Visitors', 'Website Link Clicks']
+        },
+        {
+          id: 8,
+          icon: 'Eye',
+          title: 'CPM Campaigns',
+          description: 'Cost-per-thousand impression campaigns designed to maximize scale, reach, and brand visibility across targeted display networks.',
+          features: ['Cost-Per-Thousand Impressions', 'Maximum Display Reach', 'Scalable Brand Visibility']
+        },
+        {
+          id: 9,
+          icon: 'Play',
+          title: 'CPV Campaigns',
+          description: 'Cost-per-view video campaigns ideal for video promotions, helping brands get views and audience attention at low cost.',
+          features: ['Cost-Per-View Optimizations', 'Video Campaign Marketing', 'Audience Attention Retention']
+        },
+        {
+          id: 10,
+          icon: 'Mail',
+          title: 'Lead Generation Campaigns',
+          description: 'Targeted acquisition funnels focused on delivering genuine user inquiries, sign-ups, and prospective customers.',
+          features: ['Authentic Inbound Enquiries', 'User Sign-Up Funnels', 'Customer Database Growth']
+        },
+        {
+          id: 11,
+          icon: 'Globe',
+          title: 'Website Traffic Campaigns',
+          description: 'Driving relevant, organic, and paid traffic to websites, landing pages, and special offers with a focus on conversions.',
+          features: ['Relevant Traffic Delivery', 'Landing Page Click-Throughs', 'Call-to-Action Optimizations']
+        }
+      ]
     },
-    {
-      id: 2,
-      icon: 'TrendingUp',
-      title: 'AI-Powered Digital Marketing & Growth Engines',
-      description: 'Scale your user acquisition funnel using predictive analytics and machine learning. We engineer data-driven growth machines integrating technical SEO driven by semantic NLP algorithms to dominate search landscapes, deploy AI-copilot PPC ad optimization models across Google and LinkedIn Ads, and design programmatic A/B testing frameworks using multi-armed bandit traffic allocation. Backed by GA4, Mixpanel, and machine-learning attribution models, we map the entire user journey to deliver maximum pipeline ROI.'
+    quality: {
+      title: 'Quality Engineering & Digital Assurance',
+      subtitle: 'Rigorous validation suites, advanced automated frameworks, and multi-platform testing assurance.',
+      items: [
+        {
+          id: 12,
+          icon: 'ShieldCheck',
+          title: 'Automated Testing Frameworks',
+          description: 'Design and deploy robust automated test suites (Playwright, Cypress, Selenium) running natively inside your workflows.',
+          features: [
+            'End-to-End Test Execution',
+            'Cross-Browser Consistency',
+            'Visual Regression Gating'
+          ]
+        },
+        {
+          id: 13,
+          icon: 'Users',
+          title: 'Manual & Functional Testing',
+          description: 'Rigorous exploratory and functional validation verifying user stories, design specifications, and business rules.',
+          features: [
+            'Exploratory User-Flow Testing',
+            'Regression Functional Verifications',
+            'Ad-hoc Edge Case Discovery'
+          ]
+        },
+        {
+          id: 14,
+          icon: 'Cpu',
+          title: 'API & Microservices Testing',
+          description: 'Validation of RESTful, GraphQL, and serverless API endpoints under structural regression sweeps.',
+          features: [
+            'Endpoint Payload Regressions',
+            'Authentication & Role Gating',
+            'Schema & Response Contract Validation'
+          ]
+        },
+        {
+          id: 15,
+          icon: 'Activity',
+          title: 'Performance & Stress Testing',
+          description: 'Load, spike, and soak testing using K6 and JMeter to evaluate latency, memory leaks, and concurrency bottlenecks.',
+          features: [
+            'Concurrency Load Spikes',
+            'Memory Leak Diagnostic Scans',
+            'SLA Latency Benchmarking'
+          ]
+        },
+        {
+          id: 16,
+          icon: 'Lock',
+          title: 'Security & Vulnerability Audits',
+          description: 'Static and dynamic application security testing (SAST/DAST) protecting code layers from security vulnerabilities.',
+          features: [
+            'OWASP Top 10 Scans',
+            'Credential Exposure Audits',
+            'Input Validation Security Tiers'
+          ]
+        },
+        {
+          id: 17,
+          icon: 'Eye',
+          title: 'Accessibility Compliance (WCAG)',
+          description: 'Verification of digital surfaces against WCAG 2.1 AA/AAA standards ensuring complete inclusivity for all users.',
+          features: [
+            'Screen Reader Compatibility',
+            'Color Contrast & Navigability Checks',
+            'A11y Gating Automation'
+          ]
+        },
+        {
+          id: 18,
+          icon: 'GitMerge',
+          title: 'CI/CD Pipeline Integration',
+          description: 'Establishing native trigger execution checkpoints in DevOps pipelines for zero-touch deployment gating.',
+          features: [
+            'GitHub Actions & GitLab Hooks',
+            'Staging Release Auto-Verification',
+            'Automated Failure Alerting Channels'
+          ]
+        },
+        {
+          id: 19,
+          icon: 'Zap',
+          title: 'AI-Assisted Test Automation',
+          description: 'Leverage AI systems for self-healing test selectors, automated script repairs, and prioritizations.',
+          features: [
+            'Self-Healing Test locators',
+            'Automated Failure Root Cause Analysis',
+            'Smart Test Suite Selector Agents'
+          ]
+        },
+        {
+          id: 20,
+          icon: 'Smartphone',
+          title: 'Mobile App Verification',
+          description: 'Exploratory and automated quality checks across physical and virtual iOS and Android devices.',
+          features: [
+            'Real Device Cloud Execution',
+            'OS Version Compatibility Tests',
+            'Responsive Screen Gaps Check'
+          ]
+        },
+        {
+          id: 21,
+          icon: 'Cloud',
+          title: 'AI/ML Model Drift & Bias Audits',
+          description: 'Verifying data pipeline integrity, feature leakage, accuracy drift, bias metrics, and model execution latency.',
+          features: [
+            'Accuracy & Loss Drift Audits',
+            'Feature Leakage Diagnostic Scans',
+            'Bias & Fairness Metric Evaluations'
+          ]
+        },
+        {
+          id: 22,
+          icon: 'Terminal',
+          title: 'LLM & RAG Semantic Validation',
+          description: 'Validating Retrieval-Augmented Generation (RAG) semantic recall, hallucination metrics, prompt injections, and vector searches.',
+          features: [
+            'Hallucination & Recall Validations',
+            'Prompt Injection Security Tiers',
+            'Semantic Embedding Vector Audits'
+          ]
+        }
+      ]
     }
-  ],
-  portfolio: [
-    {
-      id: 1,
-      title: 'Fintech Core Automated QA Gating',
-      category: 'Enterprise',
-      description: 'Built a headless automation suite testing 800+ user flows on every merge, reducing staging-to-prod release cycle from 3 days to 15 minutes.',
-      tags: ['Playwright', 'CI/CD Gating', 'API Regression', 'K6 Load Testing']
-    },
-    {
-      id: 2,
-      title: 'SaaS Acquisition Marketing Engine',
-      category: 'Web',
-      description: 'Overhauled a B2B SaaS platform SEO keyword strategy and conversion funnel, resulting in a 180% increase in demo signups in 90 days.',
-      tags: ['Technical SEO', 'CRO', 'Google Ads', 'GA4 Analytics']
-    }
-  ],
-  blogs: [
-    {
-      id: 1,
-      date: 'July 18, 2026',
-      readTime: '8 min read',
-      title: 'Building Bulletproof CI/CD Gating: A Blueprint for QA Teams',
-      summary: 'How to set up automated verification tests that run on pull requests without blocking developer workflows or creating flaky failures.',
-      content: 'Continuous Integration is only as strong as your gating mechanism. Running a heavy automation suite on every single commit can lead to slow build pipelines and developer frustration due to flaky tests. In this architectural guide, we discuss splitting test suites into smoke, regression, and end-to-end integration tiers. We explain setup strategies in GitHub Actions, handling database state resets, and setting failure threshold controls to achieve high-confidence releases.'
-    },
-    {
-      id: 2,
-      date: 'June 30, 2026',
-      readTime: '6 min read',
-      title: 'Cracking B2B Acquisition: The SEO Topic Cluster Strategy',
-      summary: 'Why traditional keyword stuffing is obsolete, and how grouping structured pages around core expertise topics drives high-intent leads.',
-      content: 'Modern search algorithms prioritize semantic authority over simple keyword density. To rank for high-value transactional search queries, businesses must construct topical hubs. In this digital marketing deep dive, we detail the step-by-step process of auditing your core offerings, identifying pillar topics, writing detailed cluster articles, and establishing a robust internal linking structure that signals domain expertise to Google.'
-    }
-  ],
+  },
   testimonials: []
 };

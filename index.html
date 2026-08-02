@@ -3,19 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Hancock Software Services - High-performance custom software engineering, cloud architecture, and AI integration systems.">
-  <title>Hancock Software Services | Custom Enterprise Software</title>
+  <meta name="description" content="Hancock Software Services - Growth Marketing Campaigns & Advanced Quality Engineering Systems. Scaling user acquisition and securing zero-defect releases.">
+  <title>Hancock Software Services | Growth Marketing & Quality Engineering Systems</title>
   <link rel="stylesheet" href="style.css">
   <!-- Lucide Icons CDN -->
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
+  <!-- Top Ticker Banner -->
+  <div class="top-ticker-banner">
+    <div class="ticker-content">
+      <span class="ticker-item"><span class="ticker-dot success"></span> <strong>QA Pipeline:</strong> 100% Tests Passed (Last run: 2 mins ago)</span>
+      <span class="ticker-item"><span class="ticker-dot success"></span> <strong>AI/ML QA Accuracy:</strong> 99.4% (No Drift Detected)</span>
+      <span class="ticker-item"><span class="ticker-dot active"></span> <strong>Active Campaigns:</strong> 1,280 App Installs / Hr</span>
+    </div>
+  </div>
+
   <!-- Header -->
   <header id="header">
     <div class="container">
       <a href="#" class="logo" id="logo-branding">
-        <i data-lucide="terminal" style="color: var(--primary-color);"></i>
+        <svg class="logo-icon-svg" width="30" height="30" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 0.25rem;">
+          <defs>
+            <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="var(--secondary-color)" />
+              <stop offset="100%" stop-color="var(--primary-color)" />
+            </linearGradient>
+          </defs>
+          <path d="M16 2L29 9.5V24.5L16 32L3 24.5V9.5L16 2Z" stroke="url(#logo-grad)" stroke-width="2.5" stroke-linejoin="round" />
+          <path d="M10 10V22M22 10V22M10 16H22" stroke="url(#logo-grad)" stroke-width="2.5" stroke-linecap="round" />
+          <circle cx="10" cy="10" r="1.5" fill="var(--primary-color)" />
+          <circle cx="22" cy="22" r="1.5" fill="var(--secondary-color)" />
+          <circle cx="16" cy="16" r="2" fill="var(--primary-color)" />
+        </svg>
         <span id="logo-text">Hancock</span>
       </a>
       
@@ -24,8 +45,6 @@
           <li><a href="#hero">Home</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#blog">Blog</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -48,9 +67,9 @@
         <div class="section-header">
           <span class="badge">Our Expertise</span>
           <h2>Services We Offer</h2>
-          <p>We provide full-spectrum engineering services to build custom software products that scale and last.</p>
+          <p>We deliver high-performing digital marketing campaigns and engineer zero-defect quality automation systems.</p>
         </div>
-        <div class="services-grid" id="services-container"></div>
+        <div id="services-container"></div>
       </div>
     </section>
 
@@ -61,23 +80,92 @@
       </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="section">
+    <!-- Workflows Section -->
+    <section id="workflow" class="section" style="border-bottom: 1px solid var(--border);">
       <div class="container">
         <div class="section-header">
-          <span class="badge">Our Work</span>
-          <h2>Featured Engagements</h2>
-          <p>Explore some of the technical problems we have solved for scaling enterprises.</p>
+          <span class="badge">Operational Workflows</span>
+          <h2>Our Execution Processes</h2>
+          <p>We operate two highly specialized, independent divisions to drive customer success.</p>
         </div>
         
-        <div class="portfolio-filters" id="portfolio-filters-container">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="cloud">Cloud</button>
-          <button class="filter-btn" data-filter="enterprise">Enterprise</button>
-          <button class="filter-btn" data-filter="web">Web</button>
+        <div class="workflows-container">
+          <!-- Division A Workflow: Digital Growth -->
+          <div class="workflow-division">
+            <div class="division-title">
+              <h3>Digital Marketing & Growth Lifecycle</h3>
+              <p>Independent performance-driven user acquisition and marketing activation pipeline.</p>
+            </div>
+            <div class="workflow-steps-vertical">
+              <div class="workflow-step">
+                <span class="step-icon"><i data-lucide="target"></i></span>
+                <div class="step-info">
+                  <h5>1. Target Acquisition & Budgets</h5>
+                  <p>Understanding customer CPA/CPI goals, mapping target demographics, and allocating budgets across high-converting publisher layers.</p>
+                </div>
+              </div>
+              <div class="workflow-step">
+                <span class="step-icon"><i data-lucide="layers"></i></span>
+                <div class="step-info">
+                  <h5>2. Funnel & Creative Design</h5>
+                  <p>Building high-converting landing pages, setting up publisher links, and designing promotional creatives for multi-channel launch.</p>
+                </div>
+              </div>
+              <div class="workflow-step">
+                <span class="step-icon"><i data-lucide="megaphone"></i></span>
+                <div class="step-info">
+                  <h5>3. Multi-Channel Promotions</h5>
+                  <p>Activating affiliate campaigns and running paid social promotions across YouTube, Facebook, and Instagram platforms.</p>
+                </div>
+              </div>
+              <div class="workflow-step">
+                <span class="step-icon"><i data-lucide="bar-chart-2"></i></span>
+                <div class="step-info">
+                  <h5>4. Real-time ROI Optimization</h5>
+                  <p>Monitoring CPC/CPM/CPV conversion metrics in real-time, adjusting bids, and scaling active campaigns to maximize ROI.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Division B Workflow: Quality Engineering -->
+          <div class="workflow-division">
+            <div class="division-title">
+              <h3>Quality Engineering & Assurance Lifecycle</h3>
+              <p>Independent, zero-defect software engineering verification and validation pipeline.</p>
+            </div>
+            <div class="workflow-steps-vertical">
+              <div class="workflow-step">
+                <span class="step-icon"><i data-lucide="file-text"></i></span>
+                <div class="step-info">
+                  <h5>1. Requirements & Surface Scoping</h5>
+                  <p>Analyzing systems specifications, mapping database connections, API structures, and scoping WCAG accessibility goals.</p>
+                </div>
+              </div>
+              <div class="workflow-step">
+                <span class="step-icon"><i data-lucide="code"></i></span>
+                <div class="step-info">
+                  <h5>2. Automation Suite Development</h5>
+                  <p>Writing robust automated test suites using Playwright, Cypress, and Appium for functional and visual regressions.</p>
+                </div>
+              </div>
+              <div class="workflow-step">
+                <span class="step-icon"><i data-lucide="git-branch"></i></span>
+                <div class="step-info">
+                  <h5>3. CI/CD Integration & Load Testing</h5>
+                  <p>Gating source code checks, integrating automation scripts into pipelines, and performing JMeter stress audits under peak loads.</p>
+                </div>
+              </div>
+              <div class="workflow-step">
+                <span class="step-icon"><i data-lucide="check-circle-2"></i></span>
+                <div class="step-info">
+                  <h5>4. Validation & Zero-Defect Release</h5>
+                  <p>Verifying AI/ML data drift logs, signing off on security vulnerabilities, and authorizing zero-defect production builds.</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        
-        <div class="portfolio-grid" id="portfolio-container"></div>
       </div>
     </section>
 
@@ -106,16 +194,7 @@
     </section>
 
     <!-- Blog Section -->
-    <section id="blog" class="section">
-      <div class="container">
-        <div class="section-header">
-          <span class="badge">Insights</span>
-          <h2>Software Chronicles</h2>
-          <p>Read our engineering guides, insights, and lessons learned building scalable platforms.</p>
-        </div>
-        <div class="blog-grid" id="blog-container"></div>
-      </div>
-    </section>
+
 
     <!-- Contact Section -->
     <section id="contact" class="section">
@@ -123,25 +202,25 @@
         <div class="section-header">
           <span class="badge">Get in Touch</span>
           <h2>Let's Build Together</h2>
-          <p>Reach out to discuss your software engineering, cloud, or AI consulting needs.</p>
+          <p>Reach out to discuss your digital marketing campaigns, user acquisition goals, or quality engineering and automation requirements.</p>
         </div>
         
         <div class="contact-grid">
           <div class="contact-info" id="contact-info-container"></div>
           
           <div class="glass-card contact-form">
-            <form id="contact-form-element">
+            <form action="https://formsubmit.co/marketing@hancockssoftware.com" method="POST" id="contact-form-element">
               <div class="form-group">
                 <label for="contact-name">Name</label>
-                <input type="text" id="contact-name" class="form-control" required placeholder="John Doe">
+                <input type="text" name="name" id="contact-name" class="form-control" required placeholder="John Doe">
               </div>
               <div class="form-group">
                 <label for="contact-email">Email Address</label>
-                <input type="email" id="contact-email" class="form-control" required placeholder="john@company.com">
+                <input type="email" name="email" id="contact-email" class="form-control" required placeholder="john@company.com">
               </div>
               <div class="form-group">
                 <label for="contact-message">Project Description</label>
-                <textarea id="contact-message" class="form-control" required placeholder="Describe your systems challenge, timeline, and requirements..."></textarea>
+                <textarea name="message" id="contact-message" class="form-control" required placeholder="Describe your systems challenge, timeline, and requirements..."></textarea>
               </div>
               <button type="submit" class="btn btn-primary" style="width: 100%;">
                 Submit Inquiry
@@ -172,24 +251,22 @@
             <li><a href="#hero">Home</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#blog">Blog</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Core Expertise</h4>
           <ul>
-            <li><a href="#services">Cloud Migrations</a></li>
-            <li><a href="#services">System Integration</a></li>
-            <li><a href="#services">Custom APIs</a></li>
-            <li><a href="#services">Machine Learning Ops</a></li>
+            <li><a href="#services">Affiliate Marketing</a></li>
+            <li><a href="#services">App Install Campaigns</a></li>
+            <li><a href="#services">Test Automation</a></li>
+            <li><a href="#services">Digital Assurance</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Contact & Domain</h4>
           <ul>
             <li style="color: var(--text-muted); font-size: 0.9rem;" id="footer-domain-display">Domain: hancockssoftware.com</li>
-            <li style="color: var(--text-muted); font-size: 0.9rem;" id="footer-email-display">contact@hancockssoftware.com</li>
+            <li style="color: var(--text-muted); font-size: 0.9rem;" id="footer-email-display">marketing@hancockssoftware.com</li>
           </ul>
         </div>
       </div>
@@ -289,23 +366,9 @@
         </button>
       </div>
 
-      <!-- Portfolio Manager -->
-      <div class="customizer-section">
-        <div class="customizer-section-title">Manage Portfolio</div>
-        <div id="customizer-portfolio-list"></div>
-        <button class="list-editor-add-btn" id="btn-add-portfolio">
-          <i data-lucide="plus-circle" style="width: 14px; height: 14px;"></i> Add Project
-        </button>
-      </div>
 
-      <!-- Blogs Manager -->
-      <div class="customizer-section">
-        <div class="customizer-section-title">Manage Blogs</div>
-        <div id="customizer-blogs-list"></div>
-        <button class="list-editor-add-btn" id="btn-add-blog">
-          <i data-lucide="plus-circle" style="width: 14px; height: 14px;"></i> Add Blog Post
-        </button>
-      </div>
+
+
 
       <!-- Testimonials Manager -->
       <div class="customizer-section">

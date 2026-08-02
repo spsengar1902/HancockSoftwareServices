@@ -39,9 +39,9 @@ document.addEventListener('DOMContentLoaded', () => {
     root.style.setProperty('--secondary-rgb', hexToRgb(config.theme.secondaryColor));
     
     // Update theme-dependent styles or elements
-    const logoIcon = document.querySelector('#logo-branding i');
-    if (logoIcon) {
-      logoIcon.style.color = config.theme.primaryColor;
+    const logoSvg = document.querySelector('#logo-branding svg');
+    if (logoSvg) {
+      logoSvg.style.color = config.theme.primaryColor;
     }
   };
 
@@ -52,9 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderHero();
     renderServices();
     renderAbout();
-    renderPortfolio();
     renderTestimonials();
-    renderBlogs();
     renderContactInfo();
     
     // Re-initialize Lucide Icons after dynamic loading
@@ -126,32 +124,139 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
           </div>
           <div class="hero-visual">
-            <div class="hero-blob"></div>
-            <div class="glass-card hero-card">
-              <pre><code>${escapeHtml(config.hero.codeSnippet)}</code></pre>
+            <div class="modern-hero-card">
+              <div class="window-header">
+                <div class="window-buttons">
+                  <span class="dot close"></span>
+                  <span class="dot minimize"></span>
+                  <span class="dot maximize"></span>
+                </div>
+                <div class="window-tabs">
+                  <button class="window-tab active" id="tab-growth"><i data-lucide="trending-up"></i> Growth Metrics</button>
+                  <button class="window-tab" id="tab-qa"><i data-lucide="shield-check"></i> QA Pipeline</button>
+                  <button class="window-tab" id="tab-code"><i data-lucide="code"></i> config.js</button>
+                </div>
+              </div>
+              <div class="window-body">
+                <div class="tab-content" id="content-growth">
+                  <div class="mock-dashboard">
+                    <div class="dashboard-metric">
+                      <span class="metric-label">Mobile App Installs (CPI)</span>
+                      <span class="metric-value">2,841 <span class="trendup">+14.2%</span></span>
+                    </div>
+                    <div class="dashboard-metric">
+                      <span class="metric-label">Affiliate Leads (CPA)</span>
+                      <span class="metric-value">45,109 <span class="trendup">+22.4%</span></span>
+                    </div>
+                    <div class="dashboard-metric">
+                      <span class="metric-label">Average Campaign ROI</span>
+                      <span class="metric-value">385% <span class="trendup">Active</span></span>
+                    </div>
+                    <div class="dashboard-log">
+                      <div class="log-line"><span class="log-tag tag-success">SUCCESS</span> Ingested 450 leads from YouTube campaign.</div>
+                      <div class="log-line"><span class="log-tag tag-success">ACTIVE</span> Cost-per-install optimized to $0.42.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-content" id="content-qa" style="display: none;">
+                  <div class="mock-terminal">
+                    <div class="terminal-line"><span class="term-prompt">$</span> npm run test:assurance</div>
+                    <div class="terminal-line">Running 14 Test Suites (Playwright)...</div>
+                    <div class="terminal-line success-line">✓ [Web] Landing Page Visual Regression Test (PASSED)</div>
+                    <div class="terminal-line success-line">✓ [Mobile] Lead Form Field Validation Test (PASSED)</div>
+                    <div class="terminal-line success-line">✓ [API] Lead Ingest Schema Verification (PASSED)</div>
+                    <div class="terminal-line success-line">✓ [AI/ML] Embedding Semantic Search Drift Check (PASSED)</div>
+                    <div class="terminal-line summary-line">Tests passed: 22 passed, 22 total. Time: 4.82s</div>
+                  </div>
+                </div>
+                <div class="tab-content hero-tab-code" id="content-code" style="display: none;">
+                  <pre><code>${escapeHtml(config.hero.codeSnippet)}</code></pre>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     `;
+
+    // Bind tab switching events
+    const tabGrowth = document.getElementById('tab-growth');
+    const tabQa = document.getElementById('tab-qa');
+    const tabCode = document.getElementById('tab-code');
+
+    const contentGrowth = document.getElementById('content-growth');
+    const contentQa = document.getElementById('content-qa');
+    const contentCode = document.getElementById('content-code');
+
+    const switchTab = (activeTab, activeContent) => {
+      [tabGrowth, tabQa, tabCode].forEach(t => t.classList.remove('active'));
+      [contentGrowth, contentQa, contentCode].forEach(c => c.style.display = 'none');
+      
+      activeTab.classList.add('active');
+      activeContent.style.display = 'block';
+    };
+
+    if (tabGrowth && tabQa && tabCode) {
+      tabGrowth.addEventListener('click', () => switchTab(tabGrowth, contentGrowth));
+      tabQa.addEventListener('click', () => switchTab(tabQa, contentQa));
+      tabCode.addEventListener('click', () => switchTab(tabCode, contentCode));
+    }
+
+    if (window.lucide) window.lucide.createIcons();
   };
 
   const renderServices = () => {
     const container = document.getElementById('services-container');
     container.innerHTML = '';
     
-    (config.services || []).forEach(svc => {
-      const card = document.createElement('div');
-      card.className = 'glass-card service-card';
-      card.innerHTML = `
-        <div class="service-icon">
-          <i data-lucide="${svc.icon || 'cpu'}"></i>
+    if (!config.services) return;
+
+    // Create side-by-side verticals container grid
+    const verticalsGrid = document.createElement('div');
+    verticalsGrid.className = 'services-verticals-grid';
+
+    const verticals = ['marketing', 'quality'];
+
+    verticals.forEach(key => {
+      const vertData = config.services[key];
+      if (!vertData) return;
+
+      const col = document.createElement('div');
+      col.className = `vertical-column ${key}-vertical`;
+
+      // Render vertical header
+      col.innerHTML = `
+        <div class="vertical-header">
+          <h3>${vertData.title}</h3>
+          <p>${vertData.subtitle}</p>
         </div>
-        <h3>${svc.title}</h3>
-        <p>${svc.description}</p>
+        <div class="vertical-services-list"></div>
       `;
-      container.appendChild(card);
+
+      const listContainer = col.querySelector('.vertical-services-list');
+
+      (vertData.items || []).forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'vertical-card';
+        card.innerHTML = `
+          <h4>
+            <span class="vertical-card-icon">
+              <i data-lucide="${item.icon || 'cpu'}"></i>
+            </span>
+            ${item.title}
+          </h4>
+          <p>${item.description}</p>
+          <ul class="vertical-features">
+            ${(item.features || []).map(f => `<li>${f}</li>`).join('')}
+          </ul>
+        `;
+        listContainer.appendChild(card);
+      });
+
+      verticalsGrid.appendChild(col);
     });
+
+    container.appendChild(verticalsGrid);
   };
 
   const renderAbout = () => {
@@ -174,103 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   };
 
-  // Portfolio items state
-  let currentPortfolioFilter = 'all';
 
-  const renderPortfolio = () => {
-    const container = document.getElementById('portfolio-container');
-    container.innerHTML = '';
-    
-    const items = config.portfolio || [];
-    const filtered = currentPortfolioFilter === 'all' 
-      ? items 
-      : items.filter(item => item.category.toLowerCase() === currentPortfolioFilter);
-      
-    if (filtered.length === 0) {
-      container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted);">No projects match the selected category.</div>`;
-      return;
-    }
-
-    filtered.forEach((item, index) => {
-      const card = document.createElement('article');
-      card.className = 'glass-card portfolio-card';
-      
-      // We generate simple custom geometric SVG backgrounds for placeholder images to look stunning
-      const svgBg = generateSvgBg(index, item.title);
-      
-      card.innerHTML = `
-        <div class="portfolio-image">
-          ${svgBg}
-        </div>
-        <div class="portfolio-info">
-          <span class="badge" style="margin-bottom: 0.5rem; font-size: 0.7rem; padding: 0.2rem 0.5rem;">${item.category}</span>
-          <h3>${item.title}</h3>
-          <p>${item.description}</p>
-          <div class="portfolio-tags">
-            ${(item.tags || []).map(tag => `<span class="portfolio-tag">${tag}</span>`).join('')}
-          </div>
-        </div>
-      `;
-      container.appendChild(card);
-    });
-  };
-
-  // Simple procedural vector illustrations to replace plain image placeholders with premium art
-  const generateSvgBg = (index, title) => {
-    const colors = [
-      ['#00f2fe', '#4facfe'],
-      ['#ff0844', '#ffb199'],
-      ['#f12711', '#f5af19'],
-      ['#b12a5b', '#ff758c'],
-      ['#43e97b', '#38f9d7'],
-      ['#11998e', '#38ef7d']
-    ];
-    const palette = colors[index % colors.length];
-    return `
-      <svg width="100%" height="100%" viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg" style="background: #0f121d;">
-        <defs>
-          <linearGradient id="grad-${index}" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="${palette[0]}" stop-opacity="0.3"/>
-            <stop offset="100%" stop-color="${palette[1]}" stop-opacity="0.05"/>
-          </linearGradient>
-          <linearGradient id="grid-grad-${index}" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="${palette[0]}" stop-opacity="0.4"/>
-            <stop offset="100%" stop-color="transparent" stop-opacity="0"/>
-          </linearGradient>
-        </defs>
-        <rect width="400" height="240" fill="url(#grad-${index})"/>
-        <!-- Tech grid lines -->
-        <g stroke="${palette[0]}" stroke-opacity="0.1" stroke-width="1">
-          <line x1="40" y1="0" x2="40" y2="240" />
-          <line x1="80" y1="0" x2="80" y2="240" />
-          <line x1="120" y1="0" x2="120" y2="240" />
-          <line x1="160" y1="0" x2="160" y2="240" />
-          <line x1="200" y1="0" x2="200" y2="240" />
-          <line x1="240" y1="0" x2="240" y2="240" />
-          <line x1="280" y1="0" x2="280" y2="240" />
-          <line x1="320" y1="0" x2="320" y2="240" />
-          <line x1="360" y1="0" x2="360" y2="240" />
-          
-          <line x1="0" y1="30" x2="400" y2="30" />
-          <line x1="0" y1="60" x2="400" y2="60" />
-          <line x1="0" y1="90" x2="400" y2="90" />
-          <line x1="0" y1="120" x2="400" y2="120" />
-          <line x1="0" y1="150" x2="400" y2="150" />
-          <line x1="0" y1="180" x2="400" y2="180" />
-          <line x1="0" y1="210" x2="400" y2="210" />
-        </g>
-        <!-- Floating abstract tech elements -->
-        <circle cx="200" cy="120" r="50" stroke="${palette[0]}" stroke-opacity="0.25" stroke-width="1.5" fill="none"/>
-        <circle cx="200" cy="120" r="70" stroke="${palette[1]}" stroke-opacity="0.15" stroke-dasharray="5,5" stroke-width="1" fill="none"/>
-        <rect x="180" y="100" width="40" height="40" rx="8" stroke="${palette[0]}" stroke-opacity="0.4" stroke-width="2" fill="none"/>
-        <path d="M 120 120 L 180 120" stroke="${palette[0]}" stroke-opacity="0.3" stroke-width="2"/>
-        <path d="M 220 120 L 280 120" stroke="${palette[1]}" stroke-opacity="0.3" stroke-width="2"/>
-        <circle cx="120" cy="120" r="4" fill="${palette[0]}"/>
-        <circle cx="280" cy="120" r="4" fill="${palette[1]}"/>
-        <text x="20" y="210" fill="#fff" fill-opacity="0.6" font-family="'Space Grotesk', sans-serif" font-size="14" font-weight="bold">${title.substring(0, 20)}</text>
-      </svg>
-    `;
-  };
 
   // Testimonials Slider State
   let currentSlide = 0;
@@ -330,97 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateSliderPosition();
   });
 
-  const renderBlogs = () => {
-    const container = document.getElementById('blog-container');
-    container.innerHTML = '';
-    
-    (config.blogs || []).forEach((blog, index) => {
-      const card = document.createElement('article');
-      card.className = 'glass-card blog-card';
-      
-      const svgBg = generateSvgBg(index + 3, blog.title);
-      
-      card.innerHTML = `
-        <div class="blog-image">
-          ${svgBg}
-        </div>
-        <div class="blog-content">
-          <div class="blog-meta">
-            <span>${blog.date}</span>
-            <span>${blog.readTime}</span>
-          </div>
-          <h3>${blog.title}</h3>
-          <p>${blog.summary}</p>
-          <a href="#blog" class="blog-readmore" data-blog-id="${blog.id}">
-            Read Article
-            <i data-lucide="arrow-right"></i>
-          </a>
-        </div>
-      `;
-      container.appendChild(card);
-    });
 
-    // Add click listeners to read full articles in a modal or view
-    container.querySelectorAll('.blog-readmore').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const id = parseInt(btn.getAttribute('data-blog-id'));
-        const blog = config.blogs.find(b => b.id === id);
-        if (blog) {
-          showBlogModal(blog);
-        }
-      });
-    });
-  };
-
-  // Dynamic Blog Reader Modal
-  const showBlogModal = (blog) => {
-    const modal = document.createElement('div');
-    modal.style.position = 'fixed';
-    modal.style.top = '0';
-    modal.style.left = '0';
-    modal.style.width = '100%';
-    modal.style.height = '100%';
-    modal.style.background = 'rgba(6, 7, 10, 0.9)';
-    modal.style.backdropFilter = 'blur(15px)';
-    modal.style.webkitBackdropFilter = 'blur(15px)';
-    modal.style.zIndex = '9999';
-    modal.style.display = 'flex';
-    modal.style.alignItems = 'center';
-    modal.style.justifyContent = 'center';
-    modal.style.padding = '2rem';
-    
-    modal.innerHTML = `
-      <div class="glass-card" style="width: 100%; max-width: 750px; max-height: 85vh; overflow-y: auto; padding: 3rem; position: relative;">
-        <button id="close-blog-modal" style="position: absolute; top: 20px; right: 20px; color: var(--text-muted); font-size: 1.5rem;">
-          <i data-lucide="x"></i>
-        </button>
-        <div class="blog-meta" style="margin-bottom: 1.5rem;">
-          <span>Published on ${blog.date}</span>
-          <span>&bull;</span>
-          <span>${blog.readTime}</span>
-        </div>
-        <h2 style="font-size: 2.25rem; margin-bottom: 2rem; line-height: 1.2;">${blog.title}</h2>
-        <div style="font-size: 1.1rem; color: var(--text-color); line-height: 1.8; margin-bottom: 2rem;">
-          <p style="margin-bottom: 1.5rem; font-weight: 500; color: #fff;">${blog.summary}</p>
-          <p>${blog.content.replace(/\n/g, '<br><br>')}</p>
-        </div>
-        <button class="btn btn-secondary" id="close-blog-modal-btn">Back to Insights</button>
-      </div>
-    `;
-    
-    document.body.appendChild(modal);
-    if (window.lucide) window.lucide.createIcons();
-    
-    const closeModal = () => modal.remove();
-    modal.querySelector('#close-blog-modal').addEventListener('click', closeModal);
-    modal.querySelector('#close-blog-modal-btn').addEventListener('click', closeModal);
-    
-    // Close on overlay click
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
-    });
-  };
 
   const renderContactInfo = () => {
     const container = document.getElementById('contact-info-container');
@@ -511,17 +430,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   window.addEventListener('scroll', handleScroll);
 
-  // 5. Portfolio Category Filter Toggles
-  const filterContainer = document.getElementById('portfolio-filters-container');
-  filterContainer.addEventListener('click', (e) => {
-    if (e.target.classList.contains('filter-btn')) {
-      filterContainer.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-      e.target.classList.add('active');
-      currentPortfolioFilter = e.target.getAttribute('data-filter');
-      renderPortfolio();
-      if (window.lucide) window.lucide.createIcons();
-    }
-  });
+
 
   // 6. Mobile Menu Overlay Toggle
   const mobileToggle = document.getElementById('mobile-menu-toggle');
@@ -571,7 +480,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 7. Contact Form Simulation
+  // 7. Contact Form Submission (using FormSubmit AJAX API)
   const contactForm = document.getElementById('contact-form-element');
   const formStatus = document.getElementById('form-status-message');
 
@@ -580,23 +489,48 @@ document.addEventListener('DOMContentLoaded', () => {
     formStatus.className = 'form-status';
     formStatus.style.display = 'none';
     
-    // Simulate sending progress
     const submitBtn = contactForm.querySelector('button[type="submit"]');
     const origBtnHtml = submitBtn.innerHTML;
     submitBtn.disabled = true;
     submitBtn.innerHTML = `Sending... <i data-lucide="loader" class="animate-spin"></i>`;
     if (window.lucide) window.lucide.createIcons();
 
-    setTimeout(() => {
+    const formData = {
+      name: document.getElementById('contact-name').value,
+      email: document.getElementById('contact-email').value,
+      message: document.getElementById('contact-message').value
+    };
+
+    fetch("https://formsubmit.co/ajax/marketing@hancockssoftware.com", {
+      method: "POST",
+      headers: { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(response => {
       submitBtn.disabled = false;
       submitBtn.innerHTML = origBtnHtml;
       if (window.lucide) window.lucide.createIcons();
-      
-      // Success feedback
-      formStatus.classList.add('success');
-      formStatus.textContent = `Inquiry received! We will reach out to you at ${document.getElementById('contact-email').value} within 24 hours.`;
-      contactForm.reset();
-    }, 1500);
+
+      if (response.ok) {
+        formStatus.classList.add('success');
+        formStatus.textContent = `Inquiry received! We will reach out to you at ${formData.email} within 24 hours.`;
+        contactForm.reset();
+      } else {
+        throw new Error("Form submission failed");
+      }
+    })
+    .catch(error => {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = origBtnHtml;
+      if (window.lucide) window.lucide.createIcons();
+
+      formStatus.classList.add('error');
+      formStatus.textContent = "There was an issue sending your message. Please try again later.";
+      console.error(error);
+    });
   });
 
   // 8. VISUAL CUSTOMIZER CMS CONTROLS & BINDINGS
@@ -662,8 +596,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Render list sub-editors
     renderServicesListEditor();
-    renderPortfolioListEditor();
-    renderBlogsListEditor();
     renderTestimonialsListEditor();
   };
 
@@ -693,53 +625,74 @@ document.addEventListener('DOMContentLoaded', () => {
     const listDiv = document.getElementById('customizer-services-list');
     listDiv.innerHTML = '';
     
-    config.services.forEach((svc, index) => {
-      const item = document.createElement('div');
-      item.className = 'list-editor-item';
-      item.innerHTML = `
-        <div class="list-editor-item-header">
-          <span class="list-editor-item-title">Service #${index + 1}: ${svc.title || 'Untitled'}</span>
-          <button class="list-editor-item-delete" data-index="${index}"><i data-lucide="trash-2"></i></button>
-        </div>
-        <div class="customizer-field">
-          <input type="text" class="customizer-input svc-edit-title" data-index="${index}" placeholder="Title" value="${svc.title || ''}">
-        </div>
-        <div class="customizer-field">
-          <input type="text" class="customizer-input svc-edit-desc" data-index="${index}" placeholder="Description" value="${svc.description || ''}">
-        </div>
-        <div class="customizer-field">
-          <input type="text" class="customizer-input svc-edit-icon" data-index="${index}" placeholder="Icon name (e.g. Cpu, Zap, Server)" value="${svc.icon || 'Cpu'}">
-        </div>
-      `;
-      listDiv.appendChild(item);
+    if (!config.services) return;
+
+    const verticals = ['marketing', 'quality'];
+    
+    verticals.forEach(key => {
+      const vertData = config.services[key];
+      if (!vertData) return;
+
+      const sectionTitle = document.createElement('h4');
+      sectionTitle.style.fontSize = '0.8rem';
+      sectionTitle.style.marginTop = '1rem';
+      sectionTitle.style.marginBottom = '0.5rem';
+      sectionTitle.style.color = 'var(--primary-color)';
+      sectionTitle.textContent = vertData.title;
+      listDiv.appendChild(sectionTitle);
+
+      (vertData.items || []).forEach((svc, index) => {
+        const item = document.createElement('div');
+        item.className = 'list-editor-item';
+        item.innerHTML = `
+          <div class="list-editor-item-header">
+            <span class="list-editor-item-title">Service #${index + 1}: ${svc.title || 'Untitled'}</span>
+            <button class="list-editor-item-delete" data-vertical="${key}" data-index="${index}"><i data-lucide="trash-2"></i></button>
+          </div>
+          <div class="customizer-field">
+            <input type="text" class="customizer-input svc-edit-title" data-vertical="${key}" data-index="${index}" placeholder="Title" value="${svc.title || ''}">
+          </div>
+          <div class="customizer-field">
+            <input type="text" class="customizer-input svc-edit-desc" data-vertical="${key}" data-index="${index}" placeholder="Description" value="${svc.description || ''}">
+          </div>
+          <div class="customizer-field">
+            <input type="text" class="customizer-input svc-edit-icon" data-vertical="${key}" data-index="${index}" placeholder="Icon name" value="${svc.icon || 'Cpu'}">
+          </div>
+        `;
+        listDiv.appendChild(item);
+      });
     });
 
     // Bind event listeners for dynamic sub-fields
     listDiv.querySelectorAll('.svc-edit-title').forEach(input => {
       input.addEventListener('input', (e) => {
+        const vert = e.target.getAttribute('data-vertical');
         const idx = parseInt(e.target.getAttribute('data-index'));
-        config.services[idx].title = e.target.value;
+        config.services[vert].items[idx].title = e.target.value;
         renderAll();
       });
     });
     listDiv.querySelectorAll('.svc-edit-desc').forEach(input => {
       input.addEventListener('input', (e) => {
+        const vert = e.target.getAttribute('data-vertical');
         const idx = parseInt(e.target.getAttribute('data-index'));
-        config.services[idx].description = e.target.value;
+        config.services[vert].items[idx].description = e.target.value;
         renderAll();
       });
     });
     listDiv.querySelectorAll('.svc-edit-icon').forEach(input => {
       input.addEventListener('change', (e) => {
+        const vert = e.target.getAttribute('data-vertical');
         const idx = parseInt(e.target.getAttribute('data-index'));
-        config.services[idx].icon = e.target.value;
+        config.services[vert].items[idx].icon = e.target.value;
         renderAll();
       });
     });
     listDiv.querySelectorAll('.list-editor-item-delete').forEach(btn => {
       btn.addEventListener('click', (e) => {
+        const vert = e.currentTarget.getAttribute('data-vertical');
         const idx = parseInt(e.currentTarget.getAttribute('data-index'));
-        config.services.splice(idx, 1);
+        config.services[vert].items.splice(idx, 1);
         renderAll();
         populateCustomizerInputs();
       });
@@ -749,167 +702,21 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   document.getElementById('btn-add-service').addEventListener('click', () => {
-    config.services.push({
+    if (!config.services) return;
+    config.services.marketing.items.push({
       id: Date.now(),
       icon: 'Cpu',
-      title: 'New Enterprise Solution',
-      description: 'Describe the technical engineering service details here.'
+      title: 'New Service Capability',
+      description: 'Describe the new technical details of this capability.',
+      features: ['Automated setup checks']
     });
     renderAll();
     populateCustomizerInputs();
   });
 
-  // --- Portfolio Sub-Editor ---
-  const renderPortfolioListEditor = () => {
-    const listDiv = document.getElementById('customizer-portfolio-list');
-    listDiv.innerHTML = '';
-    
-    config.portfolio.forEach((port, index) => {
-      const item = document.createElement('div');
-      item.className = 'list-editor-item';
-      item.innerHTML = `
-        <div class="list-editor-item-header">
-          <span class="list-editor-item-title">Project #${index + 1}: ${port.title || 'Untitled'}</span>
-          <button class="list-editor-item-delete" data-index="${index}"><i data-lucide="trash-2"></i></button>
-        </div>
-        <div class="customizer-field">
-          <input type="text" class="customizer-input port-edit-title" data-index="${index}" placeholder="Title" value="${port.title || ''}">
-        </div>
-        <div class="customizer-field">
-          <input type="text" class="customizer-input port-edit-category" data-index="${index}" placeholder="Category (Cloud / Web / Enterprise)" value="${port.category || ''}">
-        </div>
-        <div class="customizer-field">
-          <input type="text" class="customizer-input port-edit-desc" data-index="${index}" placeholder="Description" value="${port.description || ''}">
-        </div>
-        <div class="customizer-field">
-          <input type="text" class="customizer-input port-edit-tags" data-index="${index}" placeholder="Tags (comma separated)" value="${(port.tags || []).join(', ')}">
-        </div>
-      `;
-      listDiv.appendChild(item);
-    });
 
-    listDiv.querySelectorAll('.port-edit-title').forEach(input => {
-      input.addEventListener('input', (e) => {
-        const idx = parseInt(e.target.getAttribute('data-index'));
-        config.portfolio[idx].title = e.target.value;
-        renderAll();
-      });
-    });
-    listDiv.querySelectorAll('.port-edit-category').forEach(input => {
-      input.addEventListener('input', (e) => {
-        const idx = parseInt(e.target.getAttribute('data-index'));
-        config.portfolio[idx].category = e.target.value;
-        renderAll();
-      });
-    });
-    listDiv.querySelectorAll('.port-edit-desc').forEach(input => {
-      input.addEventListener('input', (e) => {
-        const idx = parseInt(e.target.getAttribute('data-index'));
-        config.portfolio[idx].description = e.target.value;
-        renderAll();
-      });
-    });
-    listDiv.querySelectorAll('.port-edit-tags').forEach(input => {
-      input.addEventListener('change', (e) => {
-        const idx = parseInt(e.target.getAttribute('data-index'));
-        config.portfolio[idx].tags = e.target.value.split(',').map(t => t.trim()).filter(t => t);
-        renderAll();
-      });
-    });
-    listDiv.querySelectorAll('.list-editor-item-delete').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const idx = parseInt(e.currentTarget.getAttribute('data-index'));
-        config.portfolio.splice(idx, 1);
-        renderAll();
-        populateCustomizerInputs();
-      });
-    });
 
-    if (window.lucide) window.lucide.createIcons();
-  };
 
-  document.getElementById('btn-add-portfolio').addEventListener('click', () => {
-    config.portfolio.push({
-      id: Date.now(),
-      title: 'New Client Platform',
-      category: 'Cloud',
-      description: 'A detailed summary of the engineering architecture and business results.',
-      tags: ['Cloud', 'Systems']
-    });
-    renderAll();
-    populateCustomizerInputs();
-  });
-
-  // --- Blogs Sub-Editor ---
-  const renderBlogsListEditor = () => {
-    const listDiv = document.getElementById('customizer-blogs-list');
-    listDiv.innerHTML = '';
-    
-    config.blogs.forEach((blog, index) => {
-      const item = document.createElement('div');
-      item.className = 'list-editor-item';
-      item.innerHTML = `
-        <div class="list-editor-item-header">
-          <span class="list-editor-item-title">Blog #${index + 1}: ${blog.title || 'Untitled'}</span>
-          <button class="list-editor-item-delete" data-index="${index}"><i data-lucide="trash-2"></i></button>
-        </div>
-        <div class="customizer-field">
-          <input type="text" class="customizer-input blog-edit-title" data-index="${index}" placeholder="Title" value="${blog.title || ''}">
-        </div>
-        <div class="customizer-field">
-          <input type="text" class="customizer-input blog-edit-summary" data-index="${index}" placeholder="Brief Summary" value="${blog.summary || ''}">
-        </div>
-        <div class="customizer-field">
-          <textarea class="customizer-input blog-edit-content" data-index="${index}" placeholder="Full Body Text" style="height: 120px;">${blog.content || ''}</textarea>
-        </div>
-      `;
-      listDiv.appendChild(item);
-    });
-
-    listDiv.querySelectorAll('.blog-edit-title').forEach(input => {
-      input.addEventListener('input', (e) => {
-        const idx = parseInt(e.target.getAttribute('data-index'));
-        config.blogs[idx].title = e.target.value;
-        renderAll();
-      });
-    });
-    listDiv.querySelectorAll('.blog-edit-summary').forEach(input => {
-      input.addEventListener('input', (e) => {
-        const idx = parseInt(e.target.getAttribute('data-index'));
-        config.blogs[idx].summary = e.target.value;
-        renderAll();
-      });
-    });
-    listDiv.querySelectorAll('.blog-edit-content').forEach(input => {
-      input.addEventListener('input', (e) => {
-        const idx = parseInt(e.target.getAttribute('data-index'));
-        config.blogs[idx].content = e.target.value;
-      });
-    });
-    listDiv.querySelectorAll('.list-editor-item-delete').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const idx = parseInt(e.currentTarget.getAttribute('data-index'));
-        config.blogs.splice(idx, 1);
-        renderAll();
-        populateCustomizerInputs();
-      });
-    });
-
-    if (window.lucide) window.lucide.createIcons();
-  };
-
-  document.getElementById('btn-add-blog').addEventListener('click', () => {
-    config.blogs.push({
-      id: Date.now(),
-      date: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
-      readTime: '5 min read',
-      title: 'Decentralized Microservices Best Practices',
-      summary: 'An exploration of transactional boundaries in distributed API clusters.',
-      content: 'Start writing your complete engineering deep dive article content here. Keep it technically engaging and structure it for senior architects.'
-    });
-    renderAll();
-    populateCustomizerInputs();
-  });
 
   // --- Testimonials Sub-Editor ---
   const renderTestimonialsListEditor = () => {
