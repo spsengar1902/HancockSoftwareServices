@@ -17,8 +17,8 @@ window.HancockConfig = {
     address: '',
     socials: {
       github: 'https://github.com',
-      linkedin: 'https://linkedin.com',
-      twitter: 'https://twitter.com'
+      linkedin: 'https://www.linkedin.com/company/hancocks-software-services',
+      x: 'https://x.com'
     }
   },
   hero: {
