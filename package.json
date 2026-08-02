@@ -1,7 +1,7 @@
 {
-  "name": "hancock-software-services",
+  "name": "hancocks-software-services",
   "version": "1.0.0",
-  "description": "Website for Hancock Software Services with a built-in static visual editor",
+  "description": "Website for Hancocks Software Services with a built-in static visual editor",
   "main": "index.html",
   "scripts": {
     "dev": "vite",
@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "keywords": [
-    "hancock",
+    "hancocks",
     "software",
     "portfolio",
     "static-editor"

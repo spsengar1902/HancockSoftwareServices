@@ -1,13 +1,13 @@
-// Hancock Software Services - Main JS Logic and Dynamic CMS Engine
+// Hancocks Software Services - Main JS Logic and Dynamic CMS Engine
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Initialize State
   let config = {};
-  const DEFAULT_CONFIG = window.HancockConfig;
+  const DEFAULT_CONFIG = window.HancocksConfig;
 
   // Load from local storage if available, else load default
   const loadConfig = () => {
-    const saved = localStorage.getItem('hancock_site_config');
+    const saved = localStorage.getItem('hancocks_site_config');
     if (saved) {
       try {
         config = JSON.parse(saved);
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const renderAll = () => {
     applyTheme();
     renderBranding();
-    renderHero();
+    renderHome();
     renderServices();
     renderAbout();
     renderTestimonials();
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const renderBranding = () => {
-    document.getElementById('logo-text').textContent = config.branding.logoText || 'Hancock';
+    document.getElementById('logo-text').textContent = config.branding.logoText || 'Hancocks';
     document.title = `${config.branding.name} | ${config.branding.tagline}`;
     
     // Footer Branding
@@ -84,17 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const socialContainer = document.getElementById('footer-social-links');
     socialContainer.innerHTML = '';
     const socials = config.branding.socials || {};
-    
-    const SOCIAL_ICONS = {
-      github: `<svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>`,
-      githb: `<svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>`,
-      linkedin: `<svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>`,
-      twitter: `<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`,
-      x: `<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`
-    };
 
     Object.keys(socials).forEach(platform => {
-      const lowerPlatform = platform.toLowerCase();
+      const lowerPlatform = platform.toLowerCase().trim();
       if (socials[platform]) {
         const a = document.createElement('a');
         a.href = socials[platform];
@@ -102,37 +94,41 @@ document.addEventListener('DOMContentLoaded', () => {
         a.className = 'social-link';
         a.setAttribute('aria-label', platform);
         
-        if (SOCIAL_ICONS[lowerPlatform]) {
-          a.innerHTML = SOCIAL_ICONS[lowerPlatform];
+        if (lowerPlatform.includes('github') || lowerPlatform.includes('githb')) {
+          a.innerHTML = `<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="display: block;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.167 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.164 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>`;
+        } else if (lowerPlatform.includes('linkedin')) {
+          a.innerHTML = `<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="display: block;"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.8v8.37h2.8v-4.67c0-.25.02-.5.1-.68a1.14 1.14 0 0 1 1-.77c.76 0 1 .56 1 1.39v4.73h2.8M6.5 8.37a1.37 1.37 0 0 0 1.3-1.3A1.37 1.37 0 0 0 6.5 5.7a1.37 1.37 0 0 0-1.3 1.3 1.37 1.37 0 0 0 1.3 1.37m1.4 10.13V10.2H5.1v8.3h2.8z"/></svg>`;
+        } else if (lowerPlatform.includes('x') || lowerPlatform.includes('twitter')) {
+          a.innerHTML = `<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="display: block;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>`;
         } else {
-          a.innerHTML = `<i data-lucide="${platform}"></i>`;
+          a.innerHTML = `<i data-lucide="${lowerPlatform}"></i>`;
         }
         socialContainer.appendChild(a);
       }
     });
   };
 
-  const renderHero = () => {
-    const heroSec = document.getElementById('hero');
-    heroSec.innerHTML = `
+  const renderHome = () => {
+    const homeSec = document.getElementById('home');
+    homeSec.innerHTML = `
       <div class="container">
-        <div class="hero-grid">
-          <div class="hero-content">
-            <span class="badge">${config.hero.badge}</span>
-            <h1>${config.hero.title}</h1>
-            <p>${config.hero.subtitle}</p>
-            <div class="hero-buttons">
-              <a href="${config.hero.primaryCTALink}" class="btn btn-primary">
-                ${config.hero.primaryCTA}
+        <div class="home-grid">
+          <div class="home-content">
+            <span class="badge">${config.home.badge}</span>
+            <h1>${config.home.title}</h1>
+            <p>${config.home.subtitle}</p>
+            <div class="home-buttons">
+              <a href="${config.home.primaryCTALink}" class="btn btn-primary">
+                ${config.home.primaryCTA}
                 <i data-lucide="arrow-right"></i>
               </a>
-              <a href="${config.hero.secondaryCTALink}" class="btn btn-secondary">
-                ${config.hero.secondaryCTA}
+              <a href="${config.home.secondaryCTALink}" class="btn btn-secondary">
+                ${config.home.secondaryCTA}
               </a>
             </div>
           </div>
-          <div class="hero-visual">
-            <div class="modern-hero-card">
+          <div class="home-visual">
+            <div class="modern-home-card">
               <div class="window-header">
                 <div class="window-buttons">
                   <span class="dot close"></span>
@@ -177,8 +173,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="terminal-line summary-line">Tests passed: 22 passed, 22 total. Time: 4.82s</div>
                   </div>
                 </div>
-                <div class="tab-content hero-tab-code" id="content-code" style="display: none;">
-                  <pre><code>${escapeHtml(config.hero.codeSnippet)}</code></pre>
+                <div class="tab-content home-tab-code" id="content-code" style="display: none;">
+                  <pre><code>${escapeHtml(config.home.codeSnippet)}</code></pre>
                 </div>
               </div>
             </div>
@@ -550,7 +546,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const tryUnlockCustomizer = () => {
     if (!customizerUnlocked) {
       const pin = prompt('Enter Developer Passcode to unlock the Site Configurator:');
-      if (pin === 'HancockDev2026') {
+      if (pin === 'HancocksDev2026') {
         customizerUnlocked = true;
         // Make the floating button visible for easy subsequent access in this session
         customizerOpenBtn.style.display = 'flex';
@@ -596,11 +592,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('edit-brand-tagline').value = config.branding.tagline;
     document.getElementById('edit-brand-email').value = config.branding.contactEmail;
 
-    // Hero
-    document.getElementById('edit-hero-badge').value = config.hero.badge;
-    document.getElementById('edit-hero-title').value = config.hero.title;
-    document.getElementById('edit-hero-subtitle').value = config.hero.subtitle;
-    document.getElementById('edit-hero-code').value = config.hero.codeSnippet;
+    // Home
+    document.getElementById('edit-home-badge').value = config.home.badge;
+    document.getElementById('edit-home-title').value = config.home.title;
+    document.getElementById('edit-home-subtitle').value = config.home.subtitle;
+    document.getElementById('edit-home-code').value = config.home.codeSnippet;
 
     // Render list sub-editors
     renderServicesListEditor();
@@ -623,10 +619,10 @@ document.addEventListener('DOMContentLoaded', () => {
   bindLiveUpdate('edit-brand-domain', val => config.branding.domain = val);
   bindLiveUpdate('edit-brand-tagline', val => config.branding.tagline = val);
   bindLiveUpdate('edit-brand-email', val => config.branding.contactEmail = val);
-  bindLiveUpdate('edit-hero-badge', val => config.hero.badge = val);
-  bindLiveUpdate('edit-hero-title', val => config.hero.title = val);
-  bindLiveUpdate('edit-hero-subtitle', val => config.hero.subtitle = val);
-  bindLiveUpdate('edit-hero-code', val => config.hero.codeSnippet = val);
+  bindLiveUpdate('edit-home-badge', val => config.home.badge = val);
+  bindLiveUpdate('edit-home-title', val => config.home.title = val);
+  bindLiveUpdate('edit-home-subtitle', val => config.home.subtitle = val);
+  bindLiveUpdate('edit-home-code', val => config.home.codeSnippet = val);
 
   // --- Services Sub-Editor ---
   const renderServicesListEditor = () => {
@@ -800,14 +796,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // A. Save to local storage
   document.getElementById('btn-save-local').addEventListener('click', () => {
-    localStorage.setItem('hancock_site_config', JSON.stringify(config));
+    localStorage.setItem('hancocks_site_config', JSON.stringify(config));
     alert('Site settings successfully saved in your browser cookies/local storage! These configurations will persist when you refresh the page.');
   });
 
   // B. Reset to defaults
   document.getElementById('btn-reset-default').addEventListener('click', () => {
     if (confirm('Are you sure you want to reset all configurations back to the factory defaults? Any unsaved edits will be discarded.')) {
-      localStorage.removeItem('hancock_site_config');
+      localStorage.removeItem('hancocks_site_config');
       config = JSON.parse(JSON.stringify(DEFAULT_CONFIG));
       renderAll();
       populateCustomizerInputs();
@@ -816,7 +812,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // C. Export data.js config file
   document.getElementById('btn-export-data').addEventListener('click', () => {
-    const fileContent = `// Updated configuration database for Hancock Software Services\nwindow.HancockConfig = ${JSON.stringify(config, null, 2)};\n`;
+    const fileContent = `// Updated configuration database for Hancocks Software Services\nwindow.HancocksConfig = ${JSON.stringify(config, null, 2)};\n`;
     downloadFile(fileContent, 'data.js', 'text/javascript');
   });
 
@@ -854,7 +850,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // 3. Construct inline configuration tag replacement
-      const inlineDataScript = `<script>\nwindow.HancockConfig = ${JSON.stringify(config, null, 2)};\n</script>`;
+      const inlineDataScript = `<script>\nwindow.HancocksConfig = ${JSON.stringify(config, null, 2)};\n</script>`;
       
       // Replace stylesheet reference with embedded style
       htmlContent = htmlContent.replace(

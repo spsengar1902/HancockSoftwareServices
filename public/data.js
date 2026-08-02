@@ -1,14 +1,14 @@
-// Default configuration database for Hancock Software Services
+// Default configuration database for Hancocks Software Services
 // This structure is parsed dynamically to build the DOM, and can be edited and exported in real-time.
 
-window.HancockConfig = {
+window.HancocksConfig = {
   theme: {
     primaryColor: '#3cb371',
     secondaryColor: '#8fbc8f',
     darkMode: true
   },
   branding: {
-    name: 'Hancock Software Services',
+    name: 'Hancocks Software Services',
     logoText: 'HSS',
     domain: 'hancockssoftware.com',
     tagline: 'Growth Marketing Campaigns & Advanced Quality Engineering Assurance',
@@ -21,20 +21,20 @@ window.HancockConfig = {
       x: 'https://x.com'
     }
   },
-  hero: {
+  home: {
     badge: 'Digital Performance & Quality Assurance Partner',
     title: 'Scale Traffic. <span>Secure Code.</span>',
-    subtitle: 'Hancock Software Services delivers high-impact digital promotions, targeted mobile user acquisition, and advanced quality engineering solutions — combining growth marketing and shift-left automation to ensure absolute digital success.',
+    subtitle: 'Hancocks Software Services delivers high-impact digital promotions, targeted mobile user acquisition, and advanced quality engineering solutions — combining growth marketing and shift-left automation to ensure absolute digital success.',
     primaryCTA: 'Explore Our Services',
     primaryCTALink: '#services',
     secondaryCTA: 'Get in Touch',
     secondaryCTALink: '#contact',
-    codeSnippet: `const hancock = {\n  marketing: ["Performance Campaigns", "App Installs", "Brand Promotions"],\n  quality: ["Intelligent Automation", "Digital Assurance", "CI/CD Gating"],\n  guarantee: "Zero-defect releases and maximum growth ROI"\n};\n\nawait Promise.all([\n  hancock.launchCampaigns(),\n  hancock.runAutomation()\n]);`
+    codeSnippet: `const hancocks = {\n  marketing: ["Performance Campaigns", "App Installs", "Brand Promotions"],\n  quality: ["Intelligent Automation", "Digital Assurance", "CI/CD Gating"],\n  guarantee: "Zero-defect releases and maximum growth ROI"\n};\n\nawait Promise.all([\n  hancocks.launchCampaigns(),\n  hancocks.runAutomation()\n]);`
   },
   about: {
     badge: 'Who We Are',
     title: 'Accelerating Growth and Guaranteeing Quality',
-    p1: 'Hancock Software Services is an elite consulting partner driving business outcomes across two critical frontiers: high-performance growth marketing and zero-defect software engineering. We help brands acquire users at scale and release secure, stable software that never fails under load.',
+    p1: 'Hancocks Software Services is an elite consulting partner driving business outcomes across two critical frontiers: high-performance growth marketing and zero-defect software engineering. We help brands acquire users at scale and release secure, stable software that never fails under load.',
     p2: 'We deploy targeted performance acquisition campaigns, mobile app installs, and multi-channel social media activations. In parallel, we build advanced, shift-left test automation pipelines and execute multi-platform digital assurance audits. Our dual-engine approach ensures your business grows rapidly and your software functions flawlessly.',
     stats: [
       { number: '10M+', label: 'Acquired Users & App Installs' },
