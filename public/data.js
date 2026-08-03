@@ -11,7 +11,7 @@ window.HancocksConfig = {
     name: 'Hancocks Software Services',
     logoText: 'HSS',
     domain: 'hancockssoftware.com',
-    tagline: 'Growth Marketing Campaigns & Advanced Quality Engineering Assurance',
+    tagline: 'Digital Growth Marketing & AI/ML Software Quality Assurance',
     contactEmail: 'marketing@hancockssoftware.com',
     contactPhone: '',
     address: '',
@@ -22,9 +22,9 @@ window.HancocksConfig = {
     }
   },
   home: {
-    badge: 'Digital Performance & Quality Assurance Partner',
-    title: 'Scale Traffic. <span>Secure Code.</span>',
-    subtitle: 'Hancocks Software Services delivers high-impact digital promotions, targeted mobile user acquisition, and advanced quality engineering solutions — combining growth marketing and shift-left automation to ensure absolute digital success.',
+    badge: 'Digital Growth Marketing & AI/ML Quality Assurance',
+    title: 'Scale Traffic. <span>Secure AI & Code.</span>',
+    subtitle: 'Hancocks Software Services operates two distinct, specialized divisions: a Digital Growth Marketing team driving targeted user acquisition, and a Software QA team engineering robust test automation and AI/ML model validation.',
     primaryCTA: 'Explore Our Services',
     primaryCTALink: '#services',
     secondaryCTA: 'Get in Touch',
@@ -33,9 +33,9 @@ window.HancocksConfig = {
   },
   about: {
     badge: 'Who We Are',
-    title: 'Accelerating Growth and Guaranteeing Quality',
-    p1: 'Hancocks Software Services is an elite consulting partner driving business outcomes across two critical frontiers: high-performance growth marketing and zero-defect software engineering. We help brands acquire users at scale and release secure, stable software that never fails under load.',
-    p2: 'We deploy targeted performance acquisition campaigns, mobile app installs, and multi-channel social media activations. In parallel, we build advanced, shift-left test automation pipelines and execute multi-platform digital assurance audits. Our dual-engine approach ensures your business grows rapidly and your software functions flawlessly.',
+    title: 'Expert Digital Growth Marketing & Specialized Software QA Services',
+    p1: 'Hancocks Software Services is an elite technology consulting firm operating two independent, specialized business units. Our Digital Marketing division specializes in performance-driven user acquisition and CPC/CPA campaign scale. Our Software Quality Assurance (QA) division specializes in automated testing frameworks, CI/CD gating, and specialized validation for AI/ML and LLM applications.',
+    p2: 'Both divisions operate autonomously with dedicated expert teams. The Growth Marketing team delivers affiliate campaigns, app installs, and brand promotions to maximize ROI. Concurrently, the QA engineering team implements shift-left testing, microservices validation, accessibility compliance, and model drift audits to ensure zero-defect software releases.',
     stats: [
       { number: '10M+', label: 'Acquired Users & App Installs' },
       { number: '95%', label: 'Reduction in Staging Gating Latency' },
@@ -45,8 +45,8 @@ window.HancocksConfig = {
   },
   services: {
     marketing: {
-      title: 'Digital & Growth Services',
-      subtitle: 'High-performing, data-driven promotion and user acquisition campaigns designed to maximize digital ROI.',
+      title: 'Digital Marketing & Growth Campaigns',
+      subtitle: 'High-performing, data-driven digital promotions and user acquisition campaigns optimized for maximum CPC/CPA ROI.',
       items: [
         {
           id: 1,
@@ -128,16 +128,16 @@ window.HancocksConfig = {
       ]
     },
     quality: {
-      title: 'Quality Engineering & Digital Assurance',
-      subtitle: 'Rigorous validation suites, advanced automated frameworks, and multi-platform testing assurance.',
+      title: 'Software Quality Assurance & AI/ML QA',
+      subtitle: 'Rigorous validation suites, specialized AI/ML model verification, and multi-platform test automation.',
       items: [
         {
           id: 12,
           icon: 'ShieldCheck',
-          title: 'Automated Testing Frameworks',
-          description: 'Design and deploy robust automated test suites (Playwright, Cypress, Selenium) running natively inside your workflows.',
+          title: 'Automated Testing & QA Frameworks',
+          description: 'Design and deploy robust automated test suites (Playwright, Cypress, Selenium) running natively inside your CI/CD workflows.',
           features: [
-            'End-to-End Test Execution',
+            'End-to-End QA Execution',
             'Cross-Browser Consistency',
             'Visual Regression Gating'
           ]
@@ -233,8 +233,8 @@ window.HancocksConfig = {
         {
           id: 21,
           icon: 'Cloud',
-          title: 'AI/ML Model Drift & Bias Audits',
-          description: 'Verifying data pipeline integrity, feature leakage, accuracy drift, bias metrics, and model execution latency.',
+          title: 'AI/ML Model QA & Bias Audits',
+          description: 'Verifying machine learning data pipeline integrity, feature leakage, accuracy drift, bias metrics, and model execution latency.',
           features: [
             'Accuracy & Loss Drift Audits',
             'Feature Leakage Diagnostic Scans',
@@ -244,8 +244,8 @@ window.HancocksConfig = {
         {
           id: 22,
           icon: 'Terminal',
-          title: 'LLM & RAG Semantic Validation',
-          description: 'Validating Retrieval-Augmented Generation (RAG) semantic recall, hallucination metrics, prompt injections, and vector searches.',
+          title: 'LLM & RAG Semantic QA',
+          description: 'Validating Retrieval-Augmented Generation (RAG) semantic recall, hallucination metrics, prompt injections, and vector search QA.',
           features: [
             'Hallucination & Recall Validations',
             'Prompt Injection Security Tiers',
