@@ -78,6 +78,12 @@ document.addEventListener('DOMContentLoaded', () => {
         footerEmail.style.display = 'none';
       }
     }
+    // Contact Form Action update
+    const contactFormElement = document.getElementById('contact-form-element');
+    if (contactFormElement) {
+      contactFormElement.action = `https://formsubmit.co/shailendrasingh@hancockssoftware.com`;
+    }
+
     document.getElementById('footer-copyright').innerHTML = `&copy; ${new Date().getFullYear()} ${config.branding.name}. All rights reserved.`;
 
     // Footer Social links
@@ -505,7 +511,8 @@ document.addEventListener('DOMContentLoaded', () => {
       message: document.getElementById('contact-message').value
     };
 
-    fetch("https://formsubmit.co/ajax/marketing@hancockssoftware.com", {
+    const targetEmail = 'shailendrasingh@hancockssoftware.com';
+    fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
       method: "POST",
       headers: { 
         'Content-Type': 'application/json',
